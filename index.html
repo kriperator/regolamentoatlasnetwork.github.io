@@ -3,15 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Il mio primo sito su GitHub!</title>
+    <title>Atlas Network | Staff Home</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; background-color: #f4f4f9; }
-        h1 { color: #333; }
-        p { color: #666; }
+        :root { --bg-color: #1e1e24; --card-bg: #2a2a35; --accent-color: #5865F2; --text-color: #f1f1f6; --text-muted: #b9bbbe; --danger: #ed4245; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-color); color: var(--text-color); margin: 0; padding: 0; line-height: 1.6; }
+        header { background: linear-gradient(135deg, #111115 0%, #2a2a35 100%); padding: 30px 20px; text-align: center; border-bottom: 3px solid var(--accent-color); }
+        header h1 { margin: 0; font-size: 2.3rem; text-transform: uppercase; }
+        
+        /* MENU DI NAVIGAZIONE */
+        nav { background-color: #111115; text-align: center; padding: 10px 0; }
+        nav a { color: var(--text-muted); text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 1.1rem; transition: color 0.3s; }
+        nav a:hover, nav a.active { color: var(--accent-color); }
+
+        .container { max-width: 900px; margin: 30px auto; padding: 0 20px; }
+        .section { background-color: var(--card-bg); border-radius: 8px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        h2 { color: var(--accent-color); border-bottom: 1px solid #404050; padding-bottom: 10px; margin-top: 0; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+        .alert-box { background-color: rgba(237, 66, 69, 0.1); border-left: 4px solid var(--danger); padding: 15px; border-radius: 4px; margin: 15px 0; }
+        footer { text-align: center; padding: 20px; color: var(--text-muted); font-size: 0.9rem; margin-top: 50px; }
     </style>
 </head>
 <body>
-    <h1>Ciao Mondo! 🚀</h1>
-    <p>Questo sito è ospitato gratuitamente su GitHub Pages.</p>
+
+    <header>
+        <h1>Atlas Network</h1>
+        <p>Linee Guida Ufficiali dello Staff</p>
+    </header>
+
+    <nav>
+        <a href="index.html" class="active">Home Regolamento</a>
+        <a href="sanzioni.html">Tabella Sanzioni</a>
+        <a href="ticket.html">Gestione Ticket & SS</a>
+    </nav>
+
+    <div class="container">
+        <div class="section">
+            <h2>1. Comportamento e Doveri dello Staff</h2>
+            <p>Benvenuto nel portale dello staff di Atlas Network. Come membro del team, sei tenuto a rispettare e far rispettare i seguenti punti:</p>
+            <ul>
+                <li><strong>Professionalità:</strong> Non insultare, non provocare e mantieni la calma in ogni situazione.</li>
+                <li><strong>Imparzialità:</strong> Amici, membri VIP o player sconosciuti vanno trattati tutti allo stesso identico modo.</li>
+                <li><strong>Segretezza:</strong> Le chat staff, le decisioni interne e i file riservati non devono uscire dal team.</li>
+            </ul>
+            <div class="alert-box">
+                <strong>ATTENZIONE:</strong> La violazione della segretezza o l'abuso dei poteri (Abuse) comporta il demansionamento immediato e il ban permanente dal network.
+            </div>
+        </div>
+    </div>
+
+    <footer>&copy; 2026 Atlas Network - Area Staff</footer>
 </body>
 </html>

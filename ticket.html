@@ -3,51 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atlas Network | Ticket & SS</title>
+    <title>Atlas Network | Ticket & SS Protocol</title>
     <style>
-        :root { --bg-color: #1e1e24; --card-bg: #2a2a35; --accent-color: #5865F2; --text-color: #f1f1f6; --text-muted: #b9bbbe; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-color); color: var(--text-color); margin: 0; padding: 0; line-height: 1.6; }
-        header { background: linear-gradient(135deg, #111115 0%, #2a2a35 100%); padding: 30px 20px; text-align: center; border-bottom: 3px solid var(--accent-color); }
-        header h1 { margin: 0; font-size: 2.3rem; text-transform: uppercase; }
-        nav { background-color: #111115; text-align: center; padding: 10px 0; }
-        nav a { color: var(--text-muted); text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 1.1rem; }
-        nav a:hover, nav a.active { color: var(--accent-color); }
-        .container { max-width: 900px; margin: 30px auto; padding: 0 20px; }
-        .section { background-color: var(--card-bg); border-radius: 8px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-        h2 { color: var(--accent-color); border-bottom: 1px solid #404050; padding-bottom: 10px; margin-top: 0; }
-        ol, ul { padding-left: 20px; }
-        li { margin-bottom: 10px; }
-        footer { text-align: center; padding: 20px; color: var(--text-muted); margin-top: 50px; }
+        :root {
+            --bg-dark: #0f0f13;
+            --bg-card: #171721;
+            --gold-primary: #f1c40f;
+            --marble-white: #f5f6fa;
+            --text-light: #eaedf1;
+            --text-muted: #95a5a6;
+            --danger: #e74c3c;
+            --success: #2ecc71;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: radial-gradient(circle at center, #1b1b26 0%, #0f0f13 100%);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--gold-primary);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--marble-white);
+        }
+
+        header p {
+            margin: 5px 0 0 0;
+            color: var(--gold-primary);
+            font-weight: bold;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            background-color: #0b0b0e;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 15px 25px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--gold-primary);
+            background-color: rgba(241, 196, 15, 0.05);
+            border-bottom: 2px solid var(--gold-primary);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            background-color: var(--bg-card);
+            border: 1px solid #232333;
+            border-radius: 12px;
+            padding: 35px;
+            margin-bottom: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        h2 {
+            font-size: 1.7rem;
+            color: var(--marble-white);
+            border-left: 5px solid var(--gold-primary);
+            padding-left: 15px;
+            margin-top: 0;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            color: var(--gold-primary);
+            margin-top: 25px;
+        }
+
+        ol, ul {
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 15px;
+            color: #d1d2db;
+        }
+
+        li strong {
+            color: var(--gold-primary);
+        }
+
+        .step-badge {
+            background-color: #2c2c3e;
+            color: var(--marble-white);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-right: 5px;
+            border: 1px solid #454562;
+        }
+
+        .alert-box {
+            background: linear-gradient(90deg, rgba(231, 76, 60, 0.1) 0%, rgba(23, 23, 33, 1) 100%);
+            border-left: 4px solid var(--danger);
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .alert-box.success {
+            background: linear-gradient(90deg, rgba(46, 204, 113, 0.1) 0%, rgba(23, 23, 33, 1) 100%);
+            border-left: 4px solid var(--success);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid #171721;
+            margin-top: 60px;
+            background-color: #0b0b0e;
+        }
     </style>
 </head>
 <body>
+
     <header>
         <h1>Atlas Network</h1>
-        <p>Istruzioni per Assistenza e Controlli</p>
+        <p>Protocollo Interventi e Controllo Remoto (SS)</p>
     </header>
+
     <nav>
-        <a href="index.html">Home Regolamento</a>
+        <a href="index.html">Home & Lifesteal</a>
         <a href="sanzioni.html">Tabella Sanzioni</a>
         <a href="ticket.html" class="active">Gestione Ticket & SS</a>
     </nav>
+
     <div class="container">
+
         <div class="section">
-            <h2>3. Come rispondere ai Ticket</h2>
+            <h2>3. Gestione Esecutiva dei Ticket</h2>
+            <p>Il tempo massimo di prima risposta a un ticket aperto su Discord è di <strong>15 minuti</strong> durante le ore di punta.</p>
+            
+            <h3>Fasi di Assistenza</h3>
             <ol>
-                <li><strong>Accoglienza:</strong> Saluta l'utente cordialmente e chiedi come puoi aiutarlo.</li>
-                <li><strong>Prove:</strong> Non accettare segnalazioni senza clip video o screen evidenti (senza tagli o modifiche).</li>
-                <li><strong>Chiusura:</strong> Chiedi se l'utente ha altri dubbi prima di usare il comando di chiusura.</li>
+                <li><span class="step-badge">Fase 1</span> <strong>Claim del Ticket:</strong> Usa l'apposito tasto del bot per prendere in carico il ticket, impedendo ad altri helper di sovrapporsi.</li>
+                <li><span class="step-badge">Fase 2</span> <strong>Raccolta Prove per Segnalazioni:</strong> Se un utente reclama un torto o accusa qualcuno sul Lifesteal, esigi una clip video caricata su YouTube/Medal. Screenshots di cheat in movimento non sono validi. I log interni possono essere visionati solo da Mod+.</li>
+                <li><span class="step-badge">Fase 3</span> <strong>Risoluzione e Archiviazione:</strong> Risolto il problema, scrivi: <em>"Il problema è stato risolto. Procedo alla chiusura, grazie per aver contattato Atlas Network!"</em>. Attendi 5 minuti prima di chiudere definitivamente.</li>
             </ol>
         </div>
+
         <div class="section">
             <h2>4. Protocollo Controllo Hack (SS)</h2>
+            <p>Il controllo dello schermo è un'operazione delicata. Segui questa sequenza esatta per non commettere errori formali che renderebbero il ban nullo.</p>
+            
+            <div class="alert-box">
+                <strong>REGOLA FONDAMENTALE:</strong> È severamente vietato frugare nelle cartelle personali dell'utente (Immagini, Documenti privati, Chat personali). Ci si deve limitare ESCLUSIVAMENTE ai file di gioco di Minecraft.
+            </div>
+
+            <h3>Fasi del Controllo</h3>
             <ul>
-                <li>Usa il comando di freeze e spiega all'utente che ha 5 minuti per entrare su Discord nel canale SS.</li>
-                <li>Se l'utente ammette l'uso di cheat prima del controllo, la sanzione è ridotta a metà tempo.</li>
-                <li>Se l'utente si disconnette durante il freeze, scatta il ban automatico per 7 giorni per elusione controllo.</li>
+                <li><strong>1. Il Freeze in-game:</strong> Esegui il comando di freeze sul sospettato. Il server invierà automaticamente il messaggio di avviso. Da quel momento il player ha <strong>5 minuti precisi</strong> per entrare nella stanza vocale di Discord "Attesa Controllo".</li>
+                <li><strong>2. Opzione Ammissione:</strong> Appena il player entra nel canale vocale, chiedigli esplicitamente: <em>"Ammetti l'uso di client modificati?"</em>. Se risponde di sì, applica il ban ridotto (7 giorni). Se dice no, procedi con l'ispezione.</li>
+                <li><strong>3. Programmi autorizzati:</strong> Chiedi l'uso di AnyDesk o la condivisione schermo su Discord. Ispeziona principalmente la cartella `.minecraft/mods`, i file log recenti (`.minecraft/logs/latest.log`) e il Cestino del computer.</li>
+                <li><strong>4. Rilevamento Macro/Autoclicker:</strong> Controlla i software del mouse (Razer, Logitech, ecc.) per verificare la presenza di macro impostate per fare click anomali sul Lifesteal.</li>
             </ul>
+
+            <div class="alert-box success">
+                <strong>Chiusura Controllo Pulito:</strong> Se dopo 15 minuti di verifiche non trovi nulla, unfreeza il giocatore in gioco, scusati per il disturbo e auguragli un buon proseguimento su Atlas Network, restituendogli l'esperienza di gioco intatta.
+            </div>
         </div>
+
     </div>
-    <footer>&copy; 2026 Atlas Network - Area Staff</footer>
+
+    <footer>&copy; 2026 Atlas Network • Area Riservata Staff</footer>
 </body>
 </html>

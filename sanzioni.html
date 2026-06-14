@@ -3,56 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atlas Network | Sanzioni</title>
+    <title>Atlas Network | Tavola delle Sanzioni</title>
     <style>
-        :root { --bg-color: #1e1e24; --card-bg: #2a2a35; --accent-color: #5865F2; --text-color: #f1f1f6; --text-muted: #b9bbbe; --danger: #ed4245; --warning: #fee75c; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-color); color: var(--text-color); margin: 0; padding: 0; }
-        header { background: linear-gradient(135deg, #111115 0%, #2a2a35 100%); padding: 30px 20px; text-align: center; border-bottom: 3px solid var(--accent-color); }
-        header h1 { margin: 0; font-size: 2.3rem; text-transform: uppercase; }
-        nav { background-color: #111115; text-align: center; padding: 10px 0; }
-        nav a { color: var(--text-muted); text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 1.1rem; }
-        nav a:hover, nav a.active { color: var(--accent-color); }
-        .container { max-width: 900px; margin: 30px auto; padding: 0 20px; }
-        .section { background-color: var(--card-bg); border-radius: 8px; padding: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-        h2 { color: var(--accent-color); border-bottom: 1px solid #404050; padding-bottom: 10px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; background-color: #202028; border-radius: 6px; overflow: hidden; }
-        th, td { padding: 12px 15px; text-align: left; }
-        th { background-color: #111115; color: var(--accent-color); }
-        tr:nth-child(even) { background-color: #252530; }
-        .badge { padding: 3px 8px; border-radius: 4px; font-size: 0.85rem; font-weight: bold; }
-        .badge.mute { background-color: var(--warning); color: #000; }
-        .badge.ban { background-color: var(--danger); color: #fff; }
-        footer { text-align: center; padding: 20px; color: var(--text-muted); margin-top: 50px; }
+        :root {
+            --bg-dark: #0f0f13;
+            --bg-card: #171721;
+            --gold-primary: #f1c40f;
+            --marble-white: #f5f6fa;
+            --text-light: #eaedf1;
+            --text-muted: #95a5a6;
+            --danger: #e74c3c;
+            --warning: #f39c12;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: radial-gradient(circle at center, #1b1b26 0%, #0f0f13 100%);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--gold-primary);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--marble-white);
+        }
+
+        header p {
+            margin: 5px 0 0 0;
+            color: var(--gold-primary);
+            font-weight: bold;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            background-color: #0b0b0e;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 15px 25px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--gold-primary);
+            background-color: rgba(241, 196, 15, 0.05);
+            border-bottom: 2px solid var(--gold-primary);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            background-color: var(--bg-card);
+            border: 1px solid #232333;
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--marble-white);
+            border-left: 5px solid var(--gold-primary);
+            padding-left: 15px;
+            margin-top: 0;
+            text-transform: uppercase;
+        }
+
+        /* TABELLA AVANZATA */
+        .table-container {
+            overflow-x: auto;
+            margin-top: 25px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #111116;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #232333;
+        }
+
+        th, td {
+            padding: 15px 18px;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: #0b0b0e;
+            color: var(--gold-primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #232333;
+        }
+
+        tr {
+            border-bottom: 1px solid #1e1e2a;
+        }
+
+        tr:nth-child(even) {
+            background-color: #161622;
+        }
+
+        tr:hover {
+            background-color: #1c1c2b;
+        }
+
+        .badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+        .badge.mute { background-color: rgba(243, 156, 18, 0.2); color: #f39c12; border: 1px solid #f39c12; }
+        .badge.ban { background-color: rgba(231, 76, 60, 0.2); color: #e74c3c; border: 1px solid #e74c3c; }
+        .badge.warn { background-color: rgba(241, 196, 15, 0.2); color: #f1c40f; border: 1px solid #f1c40f; }
+
+        .cat-title {
+            background-color: #1e1e2a !important;
+            color: var(--marble-white);
+            font-weight: bold;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid #171721;
+            margin-top: 60px;
+            background-color: #0b0b0e;
+        }
     </style>
 </head>
 <body>
+
     <header>
         <h1>Atlas Network</h1>
-        <p>Tempistiche e Misure Sanzionatorie</p>
+        <p>Prontuario Sanzioni Ufficiali & Codici d'Infraczione</p>
     </header>
+
     <nav>
-        <a href="index.html">Home Regolamento</a>
+        <a href="index.html">Home & Lifesteal</a>
         <a href="sanzioni.html" class="active">Tabella Sanzioni</a>
         <a href="ticket.html">Gestione Ticket & SS</a>
     </nav>
+
     <div class="container">
         <div class="section">
-            <h2>2. Tabella Tempistiche Mute & Ban</h2>
-            <p>Applica le sanzioni basandoti rigorosamente sulla tabella ufficiale del server:</p>
-            <table>
-                <thead>
-                    <tr><th>Infrazione</th><th>Tipo</th><th>Prima Volta</th><th>Recidiva</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Spam / Flood</td><td><span class="badge mute">MUTE</span></td><td>1 Ora</td><td>1 Giorno</td></tr>
-                    <tr><td>Tossicità / Insulti</td><td><span class="badge mute">MUTE</span></td><td>2 Ore</td><td>12 Ore</td></tr>
-                    <tr><td>Bestemmie / Razzismo</td><td><span class="badge mute">MUTE</span></td><td>1 Giorno</td><td>BAN 3 Giorni</td></tr>
-                    <tr><td>Griefing</td><td><span class="badge ban">BAN</span></td><td>3 Giorni</td><td>Permanente</td></tr>
-                    <tr><td>Cheating / Hack</td><td><span class="badge ban">BAN</span></td><td>14 Giorni</td><td>Permanente</td></tr>
-                </tbody>
-            </table>
+            <h2>Matrice delle Sanzioni Coercitive</h2>
+            <p>Le sanzioni devono essere applicate senza esitazione ma rispettando la progressione prestabilita. L'estensione dei tempi è concessa solo ai Mod+ previa motivazione scritta.</p>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Infrazione / Condotta Illecita</th>
+                            <th>Tipo</th>
+                            <th>Infraczione Base</th>
+                            <th>Recidiva Grave</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="4" class="cat-title">1. Ordine Pubblico e Chat</td></tr>
+                        <tr><td>Flood / Spam / Caps Lock compulsivo</td><td><span class="badge warn">WARN</span></td><td>Ammonizione verbale</td><td>Mute 1 Ora</td></tr>
+                        <tr><td>Tossicità / Provocazioni mirate a Staff/Player</td><td><span class="badge mute">MUTE</span></td><td>2 Ore</td><td>24 Ore</td></tr>
+                        <tr><td>Insulti pesanti / Razzismo / Omofobia / Bestemmie</td><td><span class="badge mute">MUTE</span></td><td>1 Giorno</td><td>Ban 7 Giorni</td></tr>
+                        <tr><td>Condivisione Link esterni non autorizzati (IP/Discord)</td><td><span class="badge ban">BAN</span></td><td>7 Giorni</td><td>Permanente</td></tr>
+                        
+                        <tr><td colspan="4" class="cat-title">2. Specifiche Modalità Lifesteal</td></tr>
+                        <tr><td><strong>Heart Farming</strong> (Uccisione Alt o amici consenzienti)</td><td><span class="badge ban">BAN</span></td><td>3 Giorni + Reset Cuori</td><td>Permanente</td></tr>
+                        <tr><td><strong>Portal Trapping Estremo</strong> (Blocco totale al login)</td><td><span class="badge warn">WARN</span></td><td>Teletrasporto forzato player</td><td>Ban Fazione 2 Giorni</td></tr>
+                        <tr><td>Sfruttamento di Glitch per bypassare i Claim (Pistoni/TNT)</td><td><span class="badge ban">BAN</span></td><td>5 Giorni</td><td>Permanente + Reset Base</td></tr>
+                        
+                        <tr><td colspan="4" class="cat-title">3. Sicurezza e Modifiche Client</td></tr>
+                        <tr><td>Utilizzo Client Modificati / Hack (Killaura, Fly, Reach)</td><td><span class="badge ban">BAN</span></td><td>14 Giorni</td><td>Permanente</td></tr>
+                        <tr><td>Uso di X-Ray (Texture Pack o Mod)</td><td><span class="badge ban">BAN</span></td><td>7 Giorni + Wipe Minerale</td><td>Permanente</td></tr>
+                        <tr><td>Rifiuto / Evasione Controllo Hack (Disconnessione in Freeze)</td><td><span class="badge ban">BAN</span></td><td>20 Giorni</td><td>Permanente</td></tr>
+                        <tr><td>Ammissione spontanea di Cheat prima del controllo</td><td><span class="badge ban">BAN</span></td><td>7 Giorni (Dimezzato)</td><td>14 Giorni</td></tr>
+                        <tr><td>Minacce DDOS / Doxxing / Diffusione dati reali</td><td><span class="badge ban">BAN</span></td><td>Permanente</td><td>--</td></tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-    <footer>&copy; 2026 Atlas Network - Area Staff</footer>
+
+    <footer>&copy; 2026 Atlas Network • Area Riservata Staff</footer>
 </body>
 </html>

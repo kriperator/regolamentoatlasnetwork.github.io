@@ -3,56 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atlas Network | Ticket & SS Protocol</title>
+    <title>Atlas Network | Protocollo Operativo</title>
     <style>
         :root {
-            --bg-dark: #0f0f13;
-            --bg-card: #171721;
+            --bg-dark: #0a0a0e;
+            --bg-glow: #12121a;
+            --glass-card: rgba(23, 23, 33, 0.7);
+            --glass-border: rgba(241, 196, 15, 0.15);
+            --gold-glow: rgba(241, 196, 15, 0.4);
             --gold-primary: #f1c40f;
             --marble-white: #f5f6fa;
             --text-light: #eaedf1;
-            --text-muted: #95a5a6;
-            --danger: #e74c3c;
+            --text-muted: #8a8d98;
+            --danger: #ff4757;
             --success: #2ecc71;
         }
 
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: var(--bg-dark);
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-glow) 100%);
+            background-attachment: fixed;
             color: var(--text-light);
             margin: 0;
             padding: 0;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         header {
-            background: radial-gradient(circle at center, #1b1b26 0%, #0f0f13 100%);
             padding: 40px 20px;
             text-align: center;
-            border-bottom: 4px solid var(--gold-primary);
+            background: radial-gradient(circle at center, rgba(27, 27, 38, 0.6) 0%, rgba(10, 10, 14, 0.9) 100%);
+            border-bottom: 1px solid var(--glass-border);
         }
 
         header h1 {
             margin: 0;
-            font-size: 2.3rem;
+            font-size: 2.5rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--marble-white);
+            letter-spacing: 4px;
+            font-weight: 900;
+            background: linear-gradient(to right, #ffffff, var(--gold-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         header p {
             margin: 5px 0 0 0;
-            color: var(--gold-primary);
-            font-weight: bold;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
             font-size: 0.9rem;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
 
         nav {
-            background-color: #0b0b0e;
+            background: rgba(11, 11, 14, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             display: flex;
             justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -61,93 +71,97 @@
         nav a {
             color: var(--text-muted);
             text-decoration: none;
-            padding: 15px 25px;
-            font-weight: 600;
+            padding: 20px 30px;
+            font-weight: 700;
             text-transform: uppercase;
             font-size: 0.85rem;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            transition: all 0.3s;
         }
 
-        nav a:hover, nav a.active {
+        nav a:hover { color: #fff; }
+        nav a.active {
             color: var(--gold-primary);
-            background-color: rgba(241, 196, 15, 0.05);
-            border-bottom: 2px solid var(--gold-primary);
+            text-shadow: 0 0 15px var(--gold-glow);
+            position: relative;
+        }
+        nav a.active::after {
+            content: ''; position: absolute; bottom: 0; left: 20%; right: 20%; height: 3px;
+            background: var(--gold-primary); box-shadow: 0 -2px 10px var(--gold-primary);
         }
 
         .container {
             max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
+            margin: 50px auto;
+            padding: 0 25px;
         }
 
         .section {
-            background-color: var(--bg-card);
-            border: 1px solid #232333;
-            border-radius: 12px;
-            padding: 35px;
-            margin-bottom: 35px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            background: var(--glass-card);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
         h2 {
-            font-size: 1.7rem;
+            font-size: 1.8rem;
             color: var(--marble-white);
-            border-left: 5px solid var(--gold-primary);
-            padding-left: 15px;
             margin-top: 0;
             text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
         }
+        h2::before { content: '📜'; margin-right: 15px; }
 
-        h3 {
-            color: var(--gold-primary);
-            margin-top: 25px;
-        }
+        h3 { color: var(--gold-primary); margin-top: 30px; text-transform: uppercase; font-size: 1.2rem; }
 
-        ol, ul {
-            padding-left: 25px;
-        }
-
-        li {
+        /* BLOCCHI DI PROCEDURA ELEGANTI */
+        .step-list { list-style: none; padding: 0; }
+        .step-item {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255,255,255,0.03);
+            border-radius: 10px;
+            padding: 20px;
             margin-bottom: 15px;
-            color: #d1d2db;
+            display: flex;
+            align-items: flex-start;
         }
-
-        li strong {
-            color: var(--gold-primary);
+        .step-number {
+            background: linear-gradient(135deg, var(--gold-primary), #d4af37);
+            color: #000;
+            font-weight: 900;
+            min-width: 30px;
+            height: 30px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 0.9rem;
+            box-shadow: 0 0 10px var(--gold-glow);
         }
-
-        .step-badge {
-            background-color: #2c2c3e;
-            color: var(--marble-white);
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            margin-right: 5px;
-            border: 1px solid #454562;
-        }
+        .step-text strong { color: #fff; }
 
         .alert-box {
-            background: linear-gradient(90deg, rgba(231, 76, 60, 0.1) 0%, rgba(23, 23, 33, 1) 100%);
+            background: linear-gradient(90deg, rgba(255, 71, 87, 0.08) 0%, rgba(23, 23, 33, 0) 100%);
             border-left: 4px solid var(--danger);
             padding: 20px;
-            border-radius: 6px;
-            margin: 20px 0;
+            border-radius: 8px;
+            margin: 25px 0;
         }
-
         .alert-box.success {
-            background: linear-gradient(90deg, rgba(46, 204, 113, 0.1) 0%, rgba(23, 23, 33, 1) 100%);
+            background: linear-gradient(90deg, rgba(46, 204, 113, 0.08) 0%, rgba(23, 23, 33, 0) 100%);
             border-left: 4px solid var(--success);
         }
 
         footer {
-            text-align: center;
-            padding: 40px;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            border-top: 1px solid #171721;
-            margin-top: 60px;
-            background-color: #0b0b0e;
+            text-align: center; padding: 50px 20px; color: var(--text-muted); font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.05); background: #060609; margin-top: 100px;
         }
     </style>
 </head>
@@ -155,7 +169,7 @@
 
     <header>
         <h1>Atlas Network</h1>
-        <p>Protocollo Interventi e Controllo Remoto (SS)</p>
+        <p>Protocolli Operativi d'Assistenza &bull; <span>SS & Ticket System</span></p>
     </header>
 
     <nav>
@@ -165,42 +179,64 @@
     </nav>
 
     <div class="container">
-
+        
+        <!-- SEZIONE TICKET -->
         <div class="section">
-            <h2>3. Gestione Esecutiva dei Ticket</h2>
-            <p>Il tempo massimo di prima risposta a un ticket aperto su Discord è di <strong>15 minuti</strong> durante le ore di punta.</p>
+            <h2>Esecuzione Tecnica dei Ticket</h2>
+            <p>I canali di supporto rappresentano il contatto diretto con l'utenza di Atlas Network. Massima serietà e tempi di reattività ridotti sono fondamentali.</p>
             
-            <h3>Fasi di Assistenza</h3>
-            <ol>
-                <li><span class="step-badge">Fase 1</span> <strong>Claim del Ticket:</strong> Usa l'apposito tasto del bot per prendere in carico il ticket, impedendo ad altri helper di sovrapporsi.</li>
-                <li><span class="step-badge">Fase 2</span> <strong>Raccolta Prove per Segnalazioni:</strong> Se un utente reclama un torto o accusa qualcuno sul Lifesteal, esigi una clip video caricata su YouTube/Medal. Screenshots di cheat in movimento non sono validi. I log interni possono essere visionati solo da Mod+.</li>
-                <li><span class="step-badge">Fase 3</span> <strong>Risoluzione e Archiviazione:</strong> Risolto il problema, scrivi: <em>"Il problema è stato risolto. Procedo alla chiusura, grazie per aver contattato Atlas Network!"</em>. Attendi 5 minuti prima di chiudere definitivamente.</li>
-            </ol>
+            <ul class="step-list">
+                <li class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-text"><strong>Presa in Carico (Claim):</strong> Lo staffer deve obbligatoriamente bloccare il ticket tramite il bot di moderazione prima di rispondere, per evitare conflitti interni al team.</div>
+                </li>
+                <li class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-text"><strong>Analisi delle Clip:</strong> Nelle controversie del Lifesteal (es. presunti cheater o abusi), non accettare video tagliati, registrazioni esterne o screenshot immobili. Esigi il caricamento su piattaforme terze (YouTube, Medal).</div>
+                </li>
+                <li class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-text"><strong>Verifica Log e Chiusura:</strong> Se necessario, richiedi l'ispezione log ai ruoli Mod+. Concludi sempre ringraziando formalmente l'utente prima di archiviare il canale.</div>
+                </li>
+            </ul>
         </div>
 
+        <!-- SEZIONE SS -->
         <div class="section">
-            <h2>4. Protocollo Controllo Hack (SS)</h2>
-            <p>Il controllo dello schermo è un'operazione delicata. Segui questa sequenza esatta per non commettere errori formali che renderebbero il ban nullo.</p>
+            <h2>Protocollo Ispezione Schermo (SS)</h2>
+            <p>La procedura di Screenshare (SS) serve a stanare alterazioni client non rilevabili dall'anti-cheat. Va eseguita con estrema precisione procedurale.</p>
             
             <div class="alert-box">
-                <strong>REGOLA FONDAMENTALE:</strong> È severamente vietato frugare nelle cartelle personali dell'utente (Immagini, Documenti privati, Chat personali). Ci si deve limitare ESCLUSIVAMENTE ai file di gioco di Minecraft.
+                <strong>TUTELA DELLA PRIVACY:</strong> È severamente vietato ispezionare materiale estraneo a Minecraft (cronologia personale, file multimediali privati o conversazioni social). Limita l'azione esclusivamente alle directory e ai registri di gioco.
             </div>
 
-            <h3>Fasi del Controllo</h3>
-            <ul>
-                <li><strong>1. Il Freeze in-game:</strong> Esegui il comando di freeze sul sospettato. Il server invierà automaticamente il messaggio di avviso. Da quel momento il player ha <strong>5 minuti precisi</strong> per entrare nella stanza vocale di Discord "Attesa Controllo".</li>
-                <li><strong>2. Opzione Ammissione:</strong> Appena il player entra nel canale vocale, chiedigli esplicitamente: <em>"Ammetti l'uso di client modificati?"</em>. Se risponde di sì, applica il ban ridotto (7 giorni). Se dice no, procedi con l'ispezione.</li>
-                <li><strong>3. Programmi autorizzati:</strong> Chiedi l'uso di AnyDesk o la condivisione schermo su Discord. Ispeziona principalmente la cartella `.minecraft/mods`, i file log recenti (`.minecraft/logs/latest.log`) e il Cestino del computer.</li>
-                <li><strong>4. Rilevamento Macro/Autoclicker:</strong> Controlla i software del mouse (Razer, Logitech, ecc.) per verificare la presenza di macro impostate per fare click anomali sul Lifesteal.</li>
+            <h3>Fasi Sequenziali d'Ispezione</h3>
+            <ul class="step-list">
+                <li class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-text"><strong>Attivazione del Freeze:</strong> Utilizza il comando in-game per congelare il sospettato. Dal freeze, il player ha esattamente <strong>5 minuti di tempo</strong> per fare ingresso nella stanza vocale Discord dedicata.</div>
+                </li>
+                <li class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-text"><strong>Fase di Interrogatorio:</strong> All'ingresso in vocale, proponi l'ammissione spontanea. In caso di risposta affermativa, si applica direttamente il ban agevolato da tabella.</div>
+                </li>
+                <li class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-text"><strong>Controllo Directory Core:</strong> Tramite AnyDesk o condivisione schermo, ispeziona la cartella <code>.minecraft/mods</code>, la cartella delle texture pack e il file di log testuale generato all'avvio (<code>latest.log</code>).</div>
+                </li>
+                <li class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-text"><strong>Ispezione Software Periferiche:</strong> Accedi ai pannelli di controllo dei driver del mouse (Logitech G Hub, Razer Synapse, ecc.) per scovare configurazioni macro non permesse o script adibiti ad Autoclicker.</div>
+                </li>
             </ul>
 
             <div class="alert-box success">
-                <strong>Chiusura Controllo Pulito:</strong> Se dopo 15 minuti di verifiche non trovi nulla, unfreeza il giocatore in gioco, scusati per il disturbo e auguragli un buon proseguimento su Atlas Network, restituendogli l'esperienza di gioco intatta.
+                <strong>Esito Negativo:</strong> Se l'utente risulta completamente pulito dopo i controlli, sbloccalo immediatamente in gioco, scusati per l'interruzione ed auguragli buon game su Atlas Network.
             </div>
         </div>
-
     </div>
 
-    <footer>&copy; 2026 Atlas Network • Area Riservata Staff</footer>
+    <footer>&copy; 2026 Atlas Network &bull; Area Riservata allo Staff.</footer>
 </body>
 </html>
+

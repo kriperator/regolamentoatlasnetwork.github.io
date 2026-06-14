@@ -3,55 +3,286 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atlas Network | Staff Home</title>
+    <title>Atlas Network | Staff Portal & Guidelines</title>
     <style>
-        :root { --bg-color: #1e1e24; --card-bg: #2a2a35; --accent-color: #5865F2; --text-color: #f1f1f6; --text-muted: #b9bbbe; --danger: #ed4245; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-color); color: var(--text-color); margin: 0; padding: 0; line-height: 1.6; }
-        header { background: linear-gradient(135deg, #111115 0%, #2a2a35 100%); padding: 30px 20px; text-align: center; border-bottom: 3px solid var(--accent-color); }
-        header h1 { margin: 0; font-size: 2.3rem; text-transform: uppercase; }
-        
-        /* MENU DI NAVIGAZIONE */
-        nav { background-color: #111115; text-align: center; padding: 10px 0; }
-        nav a { color: var(--text-muted); text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 1.1rem; transition: color 0.3s; }
-        nav a:hover, nav a.active { color: var(--accent-color); }
+        :root {
+            --bg-dark: #0f0f13;
+            --bg-card: #171721;
+            --gold-primary: #f1c40f;
+            --gold-secondary: #f39c12;
+            --marble-white: #f5f6fa;
+            --text-light: #eaedf1;
+            --text-muted: #95a5a6;
+            --danger: #e74c3c;
+            --success: #2ecc71;
+            --warning: #f39c12;
+        }
 
-        .container { max-width: 900px; margin: 30px auto; padding: 0 20px; }
-        .section { background-color: var(--card-bg); border-radius: 8px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-        h2 { color: var(--accent-color); border-bottom: 1px solid #404050; padding-bottom: 10px; margin-top: 0; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 10px; }
-        .alert-box { background-color: rgba(237, 66, 69, 0.1); border-left: 4px solid var(--danger); padding: 15px; border-radius: 4px; margin: 15px 0; }
-        footer { text-align: center; padding: 20px; color: var(--text-muted); font-size: 0.9rem; margin-top: 50px; }
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* HERO HEADER CON LOGO */
+        header {
+            background: radial-gradient(circle at center, #1b1b26 0%, #0f0f13 100%);
+            padding: 50px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--gold-primary);
+            position: relative;
+        }
+
+        header img {
+            max-width: 220px;
+            height: auto;
+            filter: drop-shadow(0px 5px 15px rgba(241, 196, 15, 0.3));
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        header h1 {
+            margin: 15px 0 5px 0;
+            font-size: 2.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: linear-gradient(to right, #ffffff, #dfdfdf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            margin: 0;
+            color: var(--gold-primary);
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        /* NAVIGAZIONE PREMIUM */
+        nav {
+            background-color: #0b0b0e;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 15px 25px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--gold-primary);
+            background-color: rgba(241, 196, 15, 0.05);
+            border-bottom: 2px solid var(--gold-primary);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* SEZIONI E CARD */
+        .section {
+            background-color: var(--bg-card);
+            border: 1px solid #232333;
+            border-radius: 12px;
+            padding: 35px;
+            margin-bottom: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--marble-white);
+            border-left: 5px solid var(--gold-primary);
+            padding-left: 15px;
+            margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h3 {
+            color: var(--gold-primary);
+            margin-top: 25px;
+            font-size: 1.3rem;
+            border-bottom: 1px solid #232333;
+            padding-bottom: 5px;
+        }
+
+        p {
+            color: #b3b5c0;
+            font-size: 1.05rem;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            color: #d1d2db;
+            font-size: 1.05rem;
+        }
+
+        li strong {
+            color: var(--gold-primary);
+        }
+
+        /* SCATOLE DI AVVISO */
+        .alert-box {
+            background: linear-gradient(90deg, rgba(231, 76, 60, 0.1) 0%, rgba(23, 23, 33, 1) 100%);
+            border-left: 4px solid var(--danger);
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .alert-box.rule {
+            background: linear-gradient(90deg, rgba(241, 196, 15, 0.1) 0%, rgba(23, 23, 33, 1) 100%);
+            border-left: 4px solid var(--gold-primary);
+        }
+
+        /* FOCUS LIFESTEAL REGOLE CRITICHE */
+        .lifesteal-badge {
+            background-color: #3a1616;
+            color: #ff7675;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 10px;
+            border: 1px solid #c0392b;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+        }
+
+        .mini-card {
+            background-color: #1e1e2b;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #2c2c3e;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid #171721;
+            margin-top: 60px;
+            background-color: #0b0b0e;
+        }
     </style>
 </head>
 <body>
 
     <header>
+        <img src="logo.png" alt="Atlas Network Logo">
         <h1>Atlas Network</h1>
-        <p>Linee Guida Ufficiali dello Staff</p>
+        <p>Documentazione Interna & Protocolli Staff</p>
     </header>
 
     <nav>
-        <a href="index.html" class="active">Home Regolamento</a>
+        <a href="index.html" class="active">Home & Lifesteal</a>
         <a href="sanzioni.html">Tabella Sanzioni</a>
         <a href="ticket.html">Gestione Ticket & SS</a>
     </nav>
 
     <div class="container">
+
         <div class="section">
-            <h2>1. Comportamento e Doveri dello Staff</h2>
-            <p>Benvenuto nel portale dello staff di Atlas Network. Come membro del team, sei tenuto a rispettare e far rispettare i seguenti punti:</p>
-            <ul>
-                <li><strong>Professionalità:</strong> Non insultare, non provocare e mantieni la calma in ogni situazione.</li>
-                <li><strong>Imparzialità:</strong> Amici, membri VIP o player sconosciuti vanno trattati tutti allo stesso identico modo.</li>
-                <li><strong>Segretezza:</strong> Le chat staff, le decisioni interne e i file riservati non devono uscire dal team.</li>
-            </ul>
-            <div class="alert-box">
-                <strong>ATTENZIONE:</strong> La violazione della segretezza o l'abuso dei poteri (Abuse) comporta il demansionamento immediato e il ban permanente dal network.
+            <h2>1. Codice di Condotta dello Staff</h2>
+            <p>I membri dello staff di Atlas Network rappresentano le fondamenta della community. Ogni azione in-game o su Discord deve riflettere integrità, serietà e assoluto rispetto per l'utenza.</p>
+            <div class="grid-2">
+                <div class="mini-card">
+                    <h3>Doveri Principali</h3>
+                    <ul>
+                        <li><strong>Presenza Attiva:</strong> Monitorare costantemente la chat globale e i canali ticket assegnati.</li>
+                        <li><strong>Imparzialità Olimpica:</strong> Nessun occhio di riguardo per amici, compagni di fazione, o utenti altospendenti (VIP).</li>
+                        <li><strong>Linguaggio Consono:</strong> È tassativamente vietato l'uso di abbreviazioni volgari, provocazioni o risposte sarcastiche ai player.</li>
+                    </ul>
+                </div>
+                <div class="mini-card">
+                    <h3>Restrizioni Critiche</h3>
+                    <ul>
+                        <li><strong>Staff Abuse:</strong> Vietato l'uso di modalità `/vanish`, `/tp` o `/fly` per trarre vantaggi di gameplay o spiare fazioni nemiche senza motivo di moderazione.</li>
+                        <li><strong>Segretezza Interna:</strong> Qualsiasi leak di chat interne, ID di controllo o decisioni amministrative equivale al demansionamento immediato (Blacklist).</li>
+                    </ul>
+                </div>
             </div>
         </div>
+
+        <div class="section">
+            <h2>2. Focus Regolamento: Modalità Lifesteal</h2>
+            <p>La modalità Lifesteal è competitiva e basata su meccaniche hardcore di pvp e furto di cuori. I conflitti sono frequenti; lo staff deve saper distinguere il gameplay aggressivo dalle violazioni reali.</p>
+            
+            <div class="alert-box rule">
+                <strong>LINEA GUIDA LIFESTEAL:</strong> Su questa modalità il furto, il griefing (nelle zone non protette) e i tradimenti tra giocatori fanno parte del gioco. Lo staff interviene solo in caso di infrazioni tecniche o tossicità estrema.
+            </div>
+
+            <h3>Meccaniche Cuori & Ban da Meccanica</h3>
+            <p>Quando un giocatore esaurisce tutti i cuori, viene automaticamente bannato dal server per meccanica di gioco.</p>
+            <ul>
+                <li><strong>Richiesta Revoca Ban per Bug:</strong> Se un utente apre un ticket dichiarando di aver perso cuori/ban a causa di un bug (es. glitch del server o morte nel vuoto senza pvp), lo staff <strong>non deve unbannarlo direttamente</strong>. Richiedere i log o una clip video e taggare un Admin+.</li>
+                <li><strong>Farm di Cuori illecito (Heart Farming):</strong> È vietato uccidere ripetutamente account secondari (Alt) o amici consenzienti al solo scopo di farmare cuori. Se scoperti, scatta il reset dei cuori e sanzione per entrambi.</li>
+            </ul>
+
+            <h3>Combat Log & Regole di Combattimento</h3>
+            <div class="grid-2">
+                <div class="mini-card">
+                    <span class="lifesteal-badge">PvP & Basi</span>
+                    <p>Il <strong>Combat Log</strong> è gestito dal plugin. Se un utente crasha intenzionalmente durante un combattimento, il sistema lo uccide in automatico. Non applicare sanzioni aggiuntive a meno che non sfrutti bug di glitch/teletrasporto prima del colpo finale.</p>
+                </div>
+                <div class="mini-card">
+                    <span class="lifesteal-badge">Griefing & Basi</span>
+                    <p>Il griefing dei claim altrui tramite bug o exploit dei permessi (es. sfruttare glitch dei pistoni/tnt dove teoricamente disattivato) è considerato <strong>Exploit Grave</strong> e va sanzionato istantaneamente con un ban.</p>
+                </div>
+            </div>
+
+            <h3>Comportamenti Illeciti Specifici nel Lifesteal</h3>
+            <ul>
+                <li><strong>Insidiatrap / Spawn-Kill Estremo:</strong> Intrappolare i player nei portali del Nether (Portal Trapping) o creare trappole dove l'utente muore all'infinito senza possibilità di muoversi all'atto dello spawn è vietato. Lo staff deve intervenire per liberare l'utente e ammonire la fazione colpevole.</li>
+                <li><strong>Infiltrazione con Alt-Account nelle Fazioni:</strong> L'uso di account secondari inseriti segretamente in fazioni nemiche per disattivare claim, rubare dai bauli protetti o dare coordinate interne è punibile se si dimostra la proprietà dell'IP dell'account principale.</li>
+                <li><strong>Uso di Hack nel PvP:</strong> Data l'alta posta in gioco (perdita di cuori), le segnalazioni di Killaura, Reach o Velocity hanno la priorità massima su tutto il resto del network.</li>
+            </ul>
+        </div>
+
     </div>
 
-    <footer>&copy; 2026 Atlas Network - Area Staff</footer>
+    <footer>
+        &copy; 2026 Atlas Network • Portale di Gestione Interna Riservato allo Staff.
+    </footer>
+
 </body>
 </html>

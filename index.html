@@ -3,136 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atlas Network | Staff Portal & Guidelines</title>
+    <title>Atlas Network | Portale Staff Esecutivo</title>
     <style>
         :root {
-            --bg-dark: #0f0f13;
-            --bg-card: #171721;
+            --bg-dark: #0a0a0e;
+            --bg-glow: #12121a;
+            --glass-card: rgba(23, 23, 33, 0.7);
+            --glass-border: rgba(241, 196, 15, 0.15);
+            --gold-glow: rgba(241, 196, 15, 0.4);
             --gold-primary: #f1c40f;
             --gold-secondary: #f39c12;
             --marble-white: #f5f6fa;
             --text-light: #eaedf1;
-            --text-muted: #95a5a6;
-            --danger: #e74c3c;
-            --success: #2ecc71;
-            --warning: #f39c12;
+            --text-muted: #8a8d98;
+            --danger: #ff4757;
+            --danger-glow: rgba(255, 71, 87, 0.15);
+            --accent-blue: #5865F2;
         }
 
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-dark);
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-glow) 100%);
+            background-attachment: fixed;
             color: var(--text-light);
             margin: 0;
             padding: 0;
             line-height: 1.6;
         }
 
-        /* HERO HEADER CON LOGO */
+        /* ANIMAZIONE DEL LOGO FLOATING */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        /* HERO HEADER EPIC REstyle */
         header {
-            background: radial-gradient(circle at center, #1b1b26 0%, #0f0f13 100%);
-            padding: 50px 20px;
+            padding: 60px 20px;
             text-align: center;
-            border-bottom: 4px solid var(--gold-primary);
             position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle at center, rgba(27, 27, 38, 0.6) 0%, rgba(10, 10, 14, 0.9) 100%);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.6);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%; right: -50%; bottom: -50%; left: -50%;
+            background: radial-gradient(circle, rgba(241, 196, 15, 0.03) 0%, transparent 60%);
+            z-index: 0;
         }
 
         header img {
-            max-width: 220px;
+            max-width: 240px;
             height: auto;
-            filter: drop-shadow(0px 5px 15px rgba(241, 196, 15, 0.3));
-            animation: float 4s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0px 8px 25px rgba(241, 196, 15, 0.25));
+            animation: float 5s ease-in-out infinite;
         }
 
         header h1 {
-            margin: 15px 0 5px 0;
-            font-size: 2.8rem;
+            position: relative;
+            z-index: 1;
+            margin: 20px 0 5px 0;
+            font-size: 3rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            background: linear-gradient(to right, #ffffff, #dfdfdf);
+            letter-spacing: 5px;
+            font-weight: 900;
+            background: linear-gradient(to right, #ffffff 30%, var(--gold-primary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.8);
         }
 
         header p {
+            position: relative;
+            z-index: 1;
             margin: 0;
-            color: var(--gold-primary);
-            font-weight: bold;
+            color: var(--text-muted);
+            font-weight: 600;
             text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
+            font-size: 0.95rem;
+            letter-spacing: 3px;
         }
 
-        /* NAVIGAZIONE PREMIUM */
+        header p span {
+            color: var(--gold-primary);
+            text-shadow: 0 0 10px var(--gold-glow);
+        }
+
+        /* NAVIGAZIONE GLASSMORPHISM */
         nav {
-            background-color: #0b0b0e;
+            background: rgba(11, 11, 14, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             display: flex;
             justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         nav a {
             color: var(--text-muted);
             text-decoration: none;
-            padding: 15px 25px;
-            font-weight: 600;
+            padding: 20px 30px;
+            font-weight: 700;
             text-transform: uppercase;
             font-size: 0.85rem;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
+            letter-spacing: 2px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
         }
 
-        nav a:hover, nav a.active {
+        nav a:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        nav a.active {
             color: var(--gold-primary);
-            background-color: rgba(241, 196, 15, 0.05);
-            border-bottom: 2px solid var(--gold-primary);
+            text-shadow: 0 0 15px var(--gold-glow);
         }
 
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 20%; right: 20%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+            box-shadow: 0 -2px 10px var(--gold-primary);
+        }
+
+        /* CONTENITORE E SCHEDE GLASS */
         .container {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px;
+            max-width: 1140px;
+            margin: 50px auto;
+            padding: 0 25px;
         }
 
-        /* SEZIONI E CARD */
         .section {
-            background-color: var(--bg-card);
-            border: 1px solid #232333;
-            border-radius: 12px;
-            padding: 35px;
-            margin-bottom: 35px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            background: var(--glass-card);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            border-color: rgba(241, 196, 15, 0.3);
+            box-shadow: 0 25px 55px rgba(241, 196, 15, 0.05);
         }
 
         h2 {
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--marble-white);
-            border-left: 5px solid var(--gold-primary);
-            padding-left: 15px;
             margin-top: 0;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+        }
+
+        h2::before {
+            content: '🏛️';
+            margin-right: 15px;
+            font-size: 1.7rem;
+            filter: drop-shadow(0 0 10px var(--gold-glow));
         }
 
         h3 {
             color: var(--gold-primary);
-            margin-top: 25px;
-            font-size: 1.3rem;
-            border-bottom: 1px solid #232333;
-            padding-bottom: 5px;
+            margin-top: 35px;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 8px;
         }
 
         p {
-            color: #b3b5c0;
-            font-size: 1.05rem;
+            color: #afb2be;
+            font-size: 1.1rem;
+            line-height: 1.7;
         }
 
         ul, ol {
@@ -140,68 +203,81 @@
         }
 
         li {
-            margin-bottom: 12px;
-            color: #d1d2db;
+            margin-bottom: 14px;
+            color: #d8d9e0;
             font-size: 1.05rem;
         }
 
         li strong {
-            color: var(--gold-primary);
+            color: #fff;
+            border-bottom: 1px dashed var(--gold-primary);
         }
 
-        /* SCATOLE DI AVVISO */
+        /* ALERT BOXES E BADGES */
         .alert-box {
-            background: linear-gradient(90deg, rgba(231, 76, 60, 0.1) 0%, rgba(23, 23, 33, 1) 100%);
-            border-left: 4px solid var(--danger);
-            padding: 20px;
-            border-radius: 6px;
-            margin: 20px 0;
-        }
-
-        .alert-box.rule {
-            background: linear-gradient(90deg, rgba(241, 196, 15, 0.1) 0%, rgba(23, 23, 33, 1) 100%);
+            background: linear-gradient(90deg, rgba(241, 196, 15, 0.08) 0%, rgba(23, 23, 33, 0) 100%);
             border-left: 4px solid var(--gold-primary);
+            padding: 22px;
+            border-radius: 8px;
+            margin: 30px 0;
+            box-shadow: inset 10px 0 20px rgba(241, 196, 15, 0.02);
         }
 
-        /* FOCUS LIFESTEAL REGOLE CRITICHE */
+        .alert-box.danger {
+            background: linear-gradient(90deg, var(--danger-glow) 0%, rgba(23, 23, 33, 0) 100%);
+            border-left: 4px solid var(--danger);
+        }
+
         .lifesteal-badge {
-            background-color: #3a1616;
-            color: #ff7675;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-weight: bold;
+            background: linear-gradient(135deg, #4a1515 0%, #2c0b0b 100%);
+            color: #ff6b6b;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-weight: 800;
             font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             display: inline-block;
-            margin-bottom: 10px;
-            border: 1px solid #c0392b;
+            margin-bottom: 15px;
+            border: 1px solid #781e1e;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
+        /* GRID LAYOUTS VIA LUXURY MINI CARDS */
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 20px;
+            gap: 25px;
+            margin-top: 30px;
         }
 
         @media (max-width: 768px) {
             .grid-2 { grid-template-columns: 1fr; }
+            header h1 { font-size: 2.2rem; }
         }
 
         .mini-card {
-            background-color: #1e1e2b;
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid #2c2c3e;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: background 0.3s, border 0.3s;
+        }
+
+        .mini-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255,255,255,0.08);
         }
 
         footer {
             text-align: center;
-            padding: 40px;
+            padding: 50px 20px;
             color: var(--text-muted);
             font-size: 0.9rem;
-            border-top: 1px solid #171721;
-            margin-top: 60px;
-            background-color: #0b0b0e;
+            letter-spacing: 1px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            background: #060609;
+            margin-top: 100px;
         }
     </style>
 </head>
@@ -210,7 +286,7 @@
     <header>
         <img src="logo.png" alt="Atlas Network Logo">
         <h1>Atlas Network</h1>
-        <p>Documentazione Interna & Protocolli Staff</p>
+        <p>MANUALE DIRETTIVO DI SUPPORTO &bull; <span>AREA STAFF</span></p>
     </header>
 
     <nav>
@@ -221,68 +297,68 @@
 
     <div class="container">
 
+        <!-- SEZIONE 1: COMPORTAMENTO -->
         <div class="section">
-            <h2>1. Codice di Condotta dello Staff</h2>
-            <p>I membri dello staff di Atlas Network rappresentano le fondamenta della community. Ogni azione in-game o su Discord deve riflettere integrità, serietà e assoluto rispetto per l'utenza.</p>
+            <h2>Codice Etico Costituzionale dello Staff</h2>
+            <p>Ogni membro dello staff incarna l'autorità morale e l'efficienza organizzativa di Atlas Network. Non sono tollerate condotte incerte, personalismi o leggerezze professionali.</p>
+            
             <div class="grid-2">
                 <div class="mini-card">
-                    <h3>Doveri Principali</h3>
+                    <h3>Protocolli Comportamentali</h3>
                     <ul>
-                        <li><strong>Presenza Attiva:</strong> Monitorare costantemente la chat globale e i canali ticket assegnati.</li>
-                        <li><strong>Imparzialità Olimpica:</strong> Nessun occhio di riguardo per amici, compagni di fazione, o utenti altospendenti (VIP).</li>
-                        <li><strong>Linguaggio Consono:</strong> È tassativamente vietato l'uso di abbreviazioni volgari, provocazioni o risposte sarcastiche ai player.</li>
+                        <li><strong>Inviolabilità del Ruolo:</strong> Non farsi trascinare in flame o discussioni tossiche. La risposta dello staff deve essere algoritmica e distaccata.</li>
+                        <li><strong>Assoluta Equità:</strong> Nessun occhio di riguardo per leader di fazione storici o utenti possessori di pacchetti VIP eccelsi.</li>
                     </ul>
                 </div>
                 <div class="mini-card">
-                    <h3>Restrizioni Critiche</h3>
+                    <h3>Misure di Sicurezza</h3>
                     <ul>
-                        <li><strong>Staff Abuse:</strong> Vietato l'uso di modalità `/vanish`, `/tp` o `/fly` per trarre vantaggi di gameplay o spiare fazioni nemiche senza motivo di moderazione.</li>
-                        <li><strong>Segretezza Interna:</strong> Qualsiasi leak di chat interne, ID di controllo o decisioni amministrative equivale al demansionamento immediato (Blacklist).</li>
+                        <li><strong>Divieto di Abuso (Staff Abuse):</strong> L'uso dei comandi amministrativi in fase di gioco attivo o per agevolare compagni è sanzionato con la revoca istantanea del grado.</li>
+                        <li><strong>Segreto d'Ufficio:</strong> Le informazioni contenute nei canali interni sono protette da segreto. La divulgazione comporta l'allontanamento definitivo dal network.</li>
                     </ul>
                 </div>
             </div>
         </div>
 
+        <!-- SEZIONE 2: APPROFONDIMENTO LIFESTEAL -->
         <div class="section">
-            <h2>2. Focus Regolamento: Modalità Lifesteal</h2>
-            <p>La modalità Lifesteal è competitiva e basata su meccaniche hardcore di pvp e furto di cuori. I conflitti sono frequenti; lo staff deve saper distinguere il gameplay aggressivo dalle violazioni reali.</p>
+            <h2>Linee Guida Avanzate: Lifesteal</h2>
+            <p>Il Lifesteal è la modalità più complessa, spietata e competitiva del network. Le dinamiche pvp e la perdita permanente di cuori portano la tensione tra i player ai massimi livelli. Lo staff deve operare chirurgicamente.</p>
             
-            <div class="alert-box rule">
-                <strong>LINEA GUIDA LIFESTEAL:</strong> Su questa modalità il furto, il griefing (nelle zone non protette) e i tradimenti tra giocatori fanno parte del gioco. Lo staff interviene solo in caso di infrazioni tecniche o tossicità estrema.
+            <div class="alert-box">
+                <strong>FILOSOFIA LIFESTEAL:</strong> Il server incentiva il conflitto. Il furto di cuori, il tradimento, i sotterfugi e le razzie alle basi nemiche non protette NON costituiscono infrazione, bensì core-gameplay. Lo staff interviene solo per violazioni strutturali del codice di gioco.
             </div>
 
-            <h3>Meccaniche Cuori & Ban da Meccanica</h3>
-            <p>Quando un giocatore esaurisce tutti i cuori, viene automaticamente bannato dal server per meccanica di gioco.</p>
+            <h3>Gestione Cuori e Richieste di Ripristino</h3>
+            <p>La perdita dei cuori comporta il ban automatico dal server. Questo genera costanti ondate di ticket di protesta.</p>
             <ul>
-                <li><strong>Richiesta Revoca Ban per Bug:</strong> Se un utente apre un ticket dichiarando di aver perso cuori/ban a causa di un bug (es. glitch del server o morte nel vuoto senza pvp), lo staff <strong>non deve unbannarlo direttamente</strong>. Richiedere i log o una clip video e taggare un Admin+.</li>
-                <li><strong>Farm di Cuori illecito (Heart Farming):</strong> È vietato uccidere ripetutamente account secondari (Alt) o amici consenzienti al solo scopo di farmare cuori. Se scoperti, scatta il reset dei cuori e sanzione per entrambi.</li>
+                <li><strong>Morte per presunto Bug:</strong> Se un utente richiede il ripristino di cuori persi a causa di lag o bug, è <strong>obbligatorio</strong> pretendere una clip video nativa (No registrazioni da telefono allo schermo). In mancanza di prove video, il ticket va chiuso negativamente. I log testuali non bastano.</li>
+                <li><strong>Combattimento Illecito (Heart Farming):</strong> Monitorare i log delle uccisioni. Se notate due player (o un player e un alt account) scambiarsi uccisioni repentine a ripetizione nella stessa area protetta, scatta il ban per alterazione delle meccaniche con annesso reset totale dei cuori accumulati.</li>
             </ul>
 
-            <h3>Combat Log & Regole di Combattimento</h3>
+            <h3>Meccaniche di Assedio e Abusi Speciali</h3>
             <div class="grid-2">
                 <div class="mini-card">
-                    <span class="lifesteal-badge">PvP & Basi</span>
-                    <p>Il <strong>Combat Log</strong> è gestito dal plugin. Se un utente crasha intenzionalmente durante un combattimento, il sistema lo uccide in automatico. Non applicare sanzioni aggiuntive a meno che non sfrutti bug di glitch/teletrasporto prima del colpo finale.</p>
+                    <span class="lifesteal-badge">Regolamento Claim</span>
+                    <p><strong>Bypass dei Claim:</strong> L'utilizzo di glitch noti di Minecraft (come lo spostamento di blocchi protetti tramite pistoni o lo sfasamento con enderpearl/tnt per penetrare nelle basi) è classificato come exploit critico. Non è pvp lecito, ma sanzionabile con ban immediato.</p>
                 </div>
                 <div class="mini-card">
-                    <span class="lifesteal-badge">Griefing & Basi</span>
-                    <p>Il griefing dei claim altrui tramite bug o exploit dei permessi (es. sfruttare glitch dei pistoni/tnt dove teoricamente disattivato) è considerato <strong>Exploit Grave</strong> e va sanzionato istantaneamente con un ban.</p>
+                    <span class="lifesteal-badge">Restrizioni Trappole</span>
+                    <p><strong>Portal Trapping Ostruttivo:</strong> Costruire gabbie di ossidiana attorno ai portali del Nether per intrappolare i player all'infinito impedendo loro di digitare comandi (come `/spawn` o `/home`) è vietato se dura oltre i 10 minuti consecutivi. Lo staff ha l'ordine di distruggere la trappola e liberare il player.</p>
                 </div>
             </div>
 
-            <h3>Comportamenti Illeciti Specifici nel Lifesteal</h3>
-            <ul>
-                <li><strong>Insidiatrap / Spawn-Kill Estremo:</strong> Intrappolare i player nei portali del Nether (Portal Trapping) o creare trappole dove l'utente muore all'infinito senza possibilità di muoversi all'atto dello spawn è vietato. Lo staff deve intervenire per liberare l'utente e ammonire la fazione colpevole.</li>
-                <li><strong>Infiltrazione con Alt-Account nelle Fazioni:</strong> L'uso di account secondari inseriti segretamente in fazioni nemiche per disattivare claim, rubare dai bauli protetti o dare coordinate interne è punibile se si dimostra la proprietà dell'IP dell'account principale.</li>
-                <li><strong>Uso di Hack nel PvP:</strong> Data l'alta posta in gioco (perdita di cuori), le segnalazioni di Killaura, Reach o Velocity hanno la priorità massima su tutto il resto del network.</li>
-            </ul>
+            <div class="alert-box danger">
+                <strong>PRIORITÀ ASSOLUTA:</strong> Data la natura hardcore del Lifesteal, i ticket riguardanti l'uso di client modificati (Killaura, Reach, Velocity) durante i combattimenti strategici hanno la precedenza assoluta su qualunque altra richiesta di supporto del network.
+            </div>
         </div>
 
     </div>
 
     <footer>
-        &copy; 2026 Atlas Network • Portale di Gestione Interna Riservato allo Staff.
+        &copy; 2026 Atlas Network &bull; Portale Esecutivo Riservato all'Amministrazione dello Staff.
     </footer>
 
 </body>
 </html>
+

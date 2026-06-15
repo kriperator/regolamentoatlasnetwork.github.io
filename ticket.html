@@ -6,11 +6,11 @@
     <title>Atlas Network | Protocollo Operativo</title>
     <style>
         :root {
-            --bg-dark: #0a0a0e;
-            --bg-glow: #12121a;
-            --glass-card: rgba(23, 23, 33, 0.7);
-            --glass-border: rgba(241, 196, 15, 0.15);
-            --gold-glow: rgba(241, 196, 15, 0.4);
+            --bg-dark: #07070a;
+            --bg-glow: #0f0f16;
+            --glass-card: rgba(18, 18, 26, 0.75);
+            --glass-border: rgba(241, 196, 15, 0.18);
+            --gold-glow: rgba(241, 196, 15, 0.35);
             --gold-primary: #f1c40f;
             --marble-white: #f5f6fa;
             --text-light: #eaedf1;
@@ -29,18 +29,31 @@
             line-height: 1.7;
         }
 
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); filter: drop-shadow(0px 8px 20px rgba(241, 196, 15, 0.2)); }
+            50% { transform: translateY(-10px) rotate(0.5deg); filter: drop-shadow(0px 15px 30px rgba(241, 196, 15, 0.35)); }
+            100% { transform: translateY(0px) rotate(0deg); filter: drop-shadow(0px 8px 20px rgba(241, 196, 15, 0.2)); }
+        }
+
         header {
-            padding: 40px 20px;
+            padding: 60px 20px;
             text-align: center;
-            background: radial-gradient(circle at center, rgba(27, 27, 38, 0.6) 0%, rgba(10, 10, 14, 0.9) 100%);
+            background: radial-gradient(circle at center, rgba(22, 22, 33, 0.4) 0%, rgba(7, 7, 10, 0.95) 100%);
             border-bottom: 1px solid var(--glass-border);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+        }
+
+        header img {
+            max-width: 160px;
+            height: auto;
+            animation: float 6s ease-in-out infinite;
         }
 
         header h1 {
-            margin: 0;
-            font-size: 2.5rem;
+            margin: 20px 0 5px 0;
+            font-size: 2.8rem;
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             font-weight: 900;
             background: linear-gradient(to right, #ffffff, var(--gold-primary));
             -webkit-background-clip: text;
@@ -48,21 +61,23 @@
         }
 
         header p {
-            margin: 5px 0 0 0;
+            margin: 0;
             color: var(--text-muted);
             font-weight: 600;
             text-transform: uppercase;
             font-size: 0.9rem;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
         }
 
+        header p span { color: var(--gold-primary); }
+
         nav {
-            background: rgba(11, 11, 14, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(7, 7, 10, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             display: flex;
             justify-content: center;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -71,7 +86,7 @@
         nav a {
             color: var(--text-muted);
             text-decoration: none;
-            padding: 20px 30px;
+            padding: 22px 35px;
             font-weight: 700;
             text-transform: uppercase;
             font-size: 0.85rem;
@@ -86,29 +101,29 @@
             position: relative;
         }
         nav a.active::after {
-            content: ''; position: absolute; bottom: 0; left: 20%; right: 20%; height: 3px;
-            background: var(--gold-primary); box-shadow: 0 -2px 10px var(--gold-primary);
+            content: ''; position: absolute; bottom: 0; left: 25%; right: 25%; height: 3px;
+            background: var(--gold-primary); box-shadow: 0 -2px 12px var(--gold-primary);
         }
 
         .container {
             max-width: 1000px;
-            margin: 50px auto;
+            margin: 60px auto;
             padding: 0 25px;
         }
 
         .section {
             background: var(--glass-card);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 40px;
-            margin-bottom: 40px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border-radius: 20px;
+            padding: 45px;
+            margin-bottom: 50px;
+            box-shadow: 0 25px 55px rgba(0,0,0,0.6);
         }
 
         h2 {
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             color: var(--marble-white);
             margin-top: 0;
             text-transform: uppercase;
@@ -116,18 +131,17 @@
             display: flex;
             align-items: center;
         }
-        h2::before { content: '📜'; margin-right: 15px; }
+        h2::before { content: '📜'; margin-right: 15px; filter: drop-shadow(0 0 10px var(--gold-glow)); }
 
-        h3 { color: var(--gold-primary); margin-top: 30px; text-transform: uppercase; font-size: 1.2rem; }
+        h3 { color: var(--gold-primary); margin-top: 35px; text-transform: uppercase; font-size: 1.2rem; }
 
-        /* BLOCCHI DI PROCEDURA ELEGANTI */
         .step-list { list-style: none; padding: 0; }
         .step-item {
             background: rgba(255, 255, 255, 0.01);
             border: 1px solid rgba(255,255,255,0.03);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 15px;
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 18px;
             display: flex;
             align-items: flex-start;
         }
@@ -135,39 +149,40 @@
             background: linear-gradient(135deg, var(--gold-primary), #d4af37);
             color: #000;
             font-weight: 900;
-            min-width: 30px;
-            height: 30px;
+            min-width: 32px;
+            height: 32px;
             border-radius: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 15px;
-            font-size: 0.9rem;
-            box-shadow: 0 0 10px var(--gold-glow);
+            margin-right: 18px;
+            font-size: 0.95rem;
+            box-shadow: 0 0 12px var(--gold-glow);
         }
         .step-text strong { color: #fff; }
 
         .alert-box {
-            background: linear-gradient(90deg, rgba(255, 71, 87, 0.08) 0%, rgba(23, 23, 33, 0) 100%);
+            background: linear-gradient(90deg, rgba(255, 71, 87, 0.08) 0%, rgba(18, 18, 26, 0) 100%);
             border-left: 4px solid var(--danger);
-            padding: 20px;
+            padding: 22px;
             border-radius: 8px;
-            margin: 25px 0;
+            margin: 30px 0;
         }
         .alert-box.success {
-            background: linear-gradient(90deg, rgba(46, 204, 113, 0.08) 0%, rgba(23, 23, 33, 0) 100%);
+            background: linear-gradient(90deg, rgba(46, 204, 113, 0.08) 0%, rgba(18, 18, 26, 0) 100%);
             border-left: 4px solid var(--success);
         }
 
         footer {
             text-align: center; padding: 50px 20px; color: var(--text-muted); font-size: 0.9rem;
-            border-top: 1px solid rgba(255,255,255,0.05); background: #060609; margin-top: 100px;
+            border-top: 1px solid rgba(255,255,255,0.04); background: #050507; margin-top: 120px;
         }
     </style>
 </head>
 <body>
 
     <header>
+        <img src="atlasShit-transparent-square.png" alt="Atlas Network Logo">
         <h1>Atlas Network</h1>
         <p>Protocolli Operativi d'Assistenza &bull; <span>SS & Ticket System</span></p>
     </header>
@@ -180,7 +195,6 @@
 
     <div class="container">
         
-        <!-- SEZIONE TICKET -->
         <div class="section">
             <h2>Esecuzione Tecnica dei Ticket</h2>
             <p>I canali di supporto rappresentano il contatto diretto con l'utenza di Atlas Network. Massima serietà e tempi di reattività ridotti sono fondamentali.</p>
@@ -192,7 +206,7 @@
                 </li>
                 <li class="step-item">
                     <div class="step-number">2</div>
-                    <div class="step-text"><strong>Analisi delle Clip:</strong> Nelle controversie del Lifesteal (es. presunti cheater o abusi), non accettare video tagliati, registrazioni esterne o screenshot immobili. Esigi il caricamento su piattaforme terze (YouTube, Medal).</div>
+                    <div class="step-text"><strong>Analisi delle Clip:</strong> Nelle controversie del Lifesteal, non accettare video tagliati, registrazioni da telefono o screenshot immobili. Esigi il caricamento su YouTube o Medal.</div>
                 </li>
                 <li class="step-item">
                     <div class="step-number">3</div>
@@ -201,13 +215,12 @@
             </ul>
         </div>
 
-        <!-- SEZIONE SS -->
         <div class="section">
             <h2>Protocollo Ispezione Schermo (SS)</h2>
-            <p>La procedura di Screenshare (SS) serve a stanare alterazioni client non rilevabili dall'anti-cheat. Va eseguita con estrema precisione procedurale.</p>
+            <p>La procedura di Screenshare (SS) serve a stanare alterazioni client non rilevabili dall'anti-cheat.</p>
             
             <div class="alert-box">
-                <strong>TUTELA DELLA PRIVACY:</strong> È severamente vietato ispezionare materiale estraneo a Minecraft (cronologia personale, file multimediali privati o conversazioni social). Limita l'azione esclusivamente alle directory e ai registri di gioco.
+                <strong>TUTELA DELLA PRIVACY:</strong> È severamente vietato ispezionare materiale estraneo a Minecraft (cronologia personale, file privati o social). Limita l'azione esclusivamente alle directory e ai registri di gioco.
             </div>
 
             <h3>Fasi Sequenziali d'Ispezione</h3>
@@ -239,4 +252,5 @@
     <footer>&copy; 2026 Atlas Network &bull; Area Riservata allo Staff.</footer>
 </body>
 </html>
+
 

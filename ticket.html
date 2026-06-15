@@ -36,7 +36,7 @@
         }
 
         header {
-            padding: 60px 20px;
+            padding: 40px 20px;
             text-align: center;
             background: radial-gradient(circle at center, rgba(22, 22, 33, 0.4) 0%, rgba(7, 7, 10, 0.95) 100%);
             border-bottom: 1px solid var(--glass-border);
@@ -44,7 +44,8 @@
         }
 
         header img {
-            max-width: 160px;
+            width: 100%;
+            max-width: 130px;
             height: auto;
             animation: float 6s ease-in-out infinite;
         }
@@ -53,7 +54,7 @@
             margin: 20px 0 5px 0;
             font-size: 2.8rem;
             text-transform: uppercase;
-            letter-spacing: 5px;
+            letter-spacing: 4px;
             font-weight: 900;
             background: linear-gradient(to right, #ffffff, var(--gold-primary));
             -webkit-background-clip: text;
@@ -65,14 +66,12 @@
             color: var(--text-muted);
             font-weight: 600;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             letter-spacing: 3px;
         }
 
-        header p span { color: var(--gold-primary); }
-
         nav {
-            background: rgba(7, 7, 10, 0.85);
+            background: rgba(7, 7, 10, 0.9);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             display: flex;
@@ -86,12 +85,13 @@
         nav a {
             color: var(--text-muted);
             text-decoration: none;
-            padding: 22px 35px;
+            padding: 18px 25px;
             font-weight: 700;
             text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 2px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
             transition: all 0.3s;
+            text-align: center;
         }
 
         nav a:hover { color: #fff; }
@@ -101,14 +101,15 @@
             position: relative;
         }
         nav a.active::after {
-            content: ''; position: absolute; bottom: 0; left: 25%; right: 25%; height: 3px;
+            content: ''; position: absolute; bottom: 0; left: 15%; right: 15%; height: 3px;
             background: var(--gold-primary); box-shadow: 0 -2px 12px var(--gold-primary);
         }
 
         .container {
             max-width: 1000px;
-            margin: 60px auto;
-            padding: 0 25px;
+            margin: 40px auto;
+            padding: 0 20px;
+            box-sizing: border-box;
         }
 
         .section {
@@ -117,21 +118,24 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--glass-border);
             border-radius: 20px;
-            padding: 45px;
-            margin-bottom: 50px;
+            padding: 35px 25px;
+            margin-bottom: 40px;
             box-shadow: 0 25px 55px rgba(0,0,0,0.6);
+            box-sizing: border-box;
         }
 
         h2 {
-            font-size: 1.9rem;
+            font-size: 1.8rem;
             color: var(--marble-white);
             margin-top: 0;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
-        h2::before { content: '📜'; margin-right: 15px; filter: drop-shadow(0 0 10px var(--gold-glow)); }
+        h2::before { content: '📜'; filter: drop-shadow(0 0 10px var(--gold-glow)); }
 
         h3 { color: var(--gold-primary); margin-top: 35px; text-transform: uppercase; font-size: 1.2rem; }
 
@@ -140,8 +144,8 @@
             background: rgba(255, 255, 255, 0.01);
             border: 1px solid rgba(255,255,255,0.03);
             border-radius: 12px;
-            padding: 22px;
-            margin-bottom: 18px;
+            padding: 20px;
+            margin-bottom: 15px;
             display: flex;
             align-items: flex-start;
         }
@@ -149,14 +153,14 @@
             background: linear-gradient(135deg, var(--gold-primary), #d4af37);
             color: #000;
             font-weight: 900;
-            min-width: 32px;
-            height: 32px;
+            min-width: 30px;
+            height: 30px;
             border-radius: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 18px;
-            font-size: 0.95rem;
+            margin-right: 15px;
+            font-size: 0.9rem;
             box-shadow: 0 0 12px var(--gold-glow);
         }
         .step-text strong { color: #fff; }
@@ -164,7 +168,7 @@
         .alert-box {
             background: linear-gradient(90deg, rgba(255, 71, 87, 0.08) 0%, rgba(18, 18, 26, 0) 100%);
             border-left: 4px solid var(--danger);
-            padding: 22px;
+            padding: 20px;
             border-radius: 8px;
             margin: 30px 0;
         }
@@ -174,8 +178,25 @@
         }
 
         footer {
-            text-align: center; padding: 50px 20px; color: var(--text-muted); font-size: 0.9rem;
-            border-top: 1px solid rgba(255,255,255,0.04); background: #050507; margin-top: 120px;
+            text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.04); background: #050507; margin-top: 80px;
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 30px 15px; }
+            header h1 { font-size: 2.2rem; letter-spacing: 2px; }
+            header img { max-width: 100px; }
+            
+            nav { justify-content: space-around; }
+            nav a { padding: 15px 10px; font-size: 0.72rem; letter-spacing: 0.5px; }
+            nav a.active::after { left: 5%; right: 5%; }
+            
+            .container { margin: 25px auto; padding: 0 15px; }
+            .section { padding: 25px 15px; }
+            h2 { font-size: 1.4rem; }
+            
+            .step-item { padding: 15px; }
+            .step-number { min-width: 26px; height: 26px; font-size: 0.8rem; margin-right: 12px; }
         }
     </style>
 </head>
@@ -202,15 +223,15 @@
             <ul class="step-list">
                 <li class="step-item">
                     <div class="step-number">1</div>
-                    <div class="step-text"><strong>Presa in Carico (Claim):</strong> Lo staffer deve obbligatoriamente bloccare il ticket tramite il bot di moderazione prima di rispondere, per evitare conflitti interni al team.</div>
+                    <div class="step-text"><strong>Presa in Carico (Claim):</strong> Lo staffer deve obbligatoriamente bloccare il ticket tramite il bot prima di rispondere.</div>
                 </li>
                 <li class="step-item">
                     <div class="step-number">2</div>
-                    <div class="step-text"><strong>Analisi delle Clip:</strong> Nelle controversie del Lifesteal, non accettare video tagliati, registrazioni da telefono o screenshot immobili. Esigi il caricamento su YouTube o Medal.</div>
+                    <div class="step-text"><strong>Analisi delle Clip:</strong> Nelle controversie, non accettare video tagliati o registrazioni esterne. Esigi YouTube o Medal.</div>
                 </li>
                 <li class="step-item">
                     <div class="step-number">3</div>
-                    <div class="step-text"><strong>Verifica Log e Chiusura:</strong> Se necessario, richiedi l'ispezione log ai ruoli Mod+. Concludi sempre ringraziando formalmente l'utente prima di archiviare il canale.</div>
+                    <div class="step-text"><strong>Verifica Log:</strong> Se necessario, richiedi l'ispezione log ai Mod+. Ringrazia formalmente l'utente prima di archiviare.</div>
                 </li>
             </ul>
         </div>
@@ -220,31 +241,31 @@
             <p>La procedura di Screenshare (SS) serve a stanare alterazioni client non rilevabili dall'anti-cheat.</p>
             
             <div class="alert-box">
-                <strong>TUTELA DELLA PRIVACY:</strong> È severamente vietato ispezionare materiale estraneo a Minecraft (cronologia personale, file privati o social). Limita l'azione esclusivamente alle directory e ai registri di gioco.
+                <strong>TUTELA DELLA PRIVACY:</strong> È severamente vietato ispezionare materiale estraneo a Minecraft (cronologia personale, file privati o social).
             </div>
 
             <h3>Fasi Sequenziali d'Ispezione</h3>
             <ul class="step-list">
                 <li class="step-item">
                     <div class="step-number">1</div>
-                    <div class="step-text"><strong>Attivazione del Freeze:</strong> Utilizza il comando in-game per congelare il sospettato. Dal freeze, il player ha esattamente <strong>5 minuti di tempo</strong> per fare ingresso nella stanza vocale Discord dedicata.</div>
+                    <div class="step-text"><strong>Attivazione del Freeze:</strong> Congela il sospettato in-game. Il player ha esattamente <strong>5 minuti</strong> per entrare nella vocale Discord.</div>
                 </li>
                 <li class="step-item">
                     <div class="step-number">2</div>
-                    <div class="step-text"><strong>Fase di Interrogatorio:</strong> All'ingresso in vocale, proponi l'ammissione spontanea. In caso di risposta affermativa, si applica direttamente il ban agevolato da tabella.</div>
+                    <div class="step-text"><strong>Fase di Interrogatorio:</strong> Proponi l'ammissione spontanea per applicare il ban ridotto da tabella.</div>
                 </li>
                 <li class="step-item">
                     <div class="step-number">3</div>
-                    <div class="step-text"><strong>Controllo Directory Core:</strong> Tramite AnyDesk o condivisione schermo, ispeziona la cartella <code>.minecraft/mods</code>, la cartella delle texture pack e il file di log testuale generato all'avvio (<code>latest.log</code>).</div>
+                    <div class="step-text"><strong>Controllo Directory Core:</strong> Ispeziona la cartella <code>.minecraft/mods</code>, le texture pack e il file <code>latest.log</code>.</div>
                 </li>
                 <li class="step-item">
                     <div class="step-number">4</div>
-                    <div class="step-text"><strong>Ispezione Software Periferiche:</strong> Accedi ai pannelli di controllo dei driver del mouse (Logitech G Hub, Razer Synapse, ecc.) per scovare configurazioni macro non permesse o script adibiti ad Autoclicker.</div>
+                    <div class="step-text"><strong>Ispezione Periferiche:</strong> Controlla i driver del mouse (Logitech, Razer, ecc.) per scovare macro o Autoclicker.</div>
                 </li>
             </ul>
 
             <div class="alert-box success">
-                <strong>Esito Negativo:</strong> Se l'utente risulta completamente pulito dopo i controlli, sbloccalo immediatamente in gioco, scusati per l'interruzione ed auguragli buon game su Atlas Network.
+                <strong>Esito Negativo:</strong> Se l'utente è pulito, sbloccalo subito, scusati per l'attesa ed auguragli buon game su Atlas Network.
             </div>
         </div>
     </div>
@@ -252,5 +273,6 @@
     <footer>&copy; 2026 Atlas Network &bull; Area Riservata allo Staff.</footer>
 </body>
 </html>
+
 
 
